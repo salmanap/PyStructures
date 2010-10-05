@@ -1,7 +1,5 @@
 from string import split
-import sys
-from numpy.lib.scimath import log2
-import math
+import sys, trees
 
 '''
 This method creates a heap from an integer array passed to it and accepts
@@ -25,6 +23,11 @@ def insert(heapArray, heapKey, shouldSwapHeapKeys):
             parent_index_of_heap_key = (index_of_heap_key-1)/2
         else:
             break # we have reached the right spot
+'''
+TODO: Implement removing from the heap
+'''
+def removeTopElementAndRearrangeHeap(heapArray):
+    pass
 
 def createMaxHeap(someArray):
     return __createHeap(someArray, lambda x,y: x > y)
@@ -37,25 +40,6 @@ def __swap(swapFromIndex, swapToIndex, heapArray):
     heapArray[swapToIndex] = heapArray[swapFromIndex]
     heapArray[swapFromIndex] = middle_man
     
-def printHeapToConsole(someHeap):
-    levels = int(log2(len(someHeap))) + 1
-    spaceForlevel = math.pow(levels, 2) * 3
-    heapKeyPos = 0
-    level = 1
-    levelBuffer = ''
-    for heapKey in someHeap:
-        heapKeyPos +=1
-        if(int(log2(heapKeyPos)) + 1 > level):
-            print levelBuffer + '\n'; level +=1 ; levelBuffer ='' ; 
-            spaceForlevel = int(spaceForlevel/2);
-        heapKeyStr = str(heapKey)
-        leftSpacer = ' ' * int(spaceForlevel/2)
-        rightSpacer = ' ' * (int(spaceForlevel/2) - len(heapKeyStr))
-        levelBuffer += leftSpacer + heapKeyStr + rightSpacer
-    
-    if len(levelBuffer) > 0:
-        print levelBuffer + '\n'
-
 if __name__ == '__main__':
     someArray = split(sys.argv[1], ",")
     print "Let's heapify this array, how about Max and Min ?"
@@ -63,9 +47,9 @@ if __name__ == '__main__':
     print '\n'
         
     print 'Min Heap Representation: ' 
-    printHeapToConsole(createMinHeap(someArray))
+    trees.printTreeToConsole(createMinHeap(someArray))
     
     print 'Max Heap Representation: ' 
-    printHeapToConsole(createMaxHeap(someArray))
+    trees.printTreeToConsole(createMaxHeap(someArray))
     
     
