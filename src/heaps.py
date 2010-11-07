@@ -55,19 +55,19 @@ def __swap(swapFromIndex, swapToIndex, heapArray):
     heapArray[swapToIndex] = heapArray[swapFromIndex]
     heapArray[swapFromIndex] = middle_man
 
-'''
+"""
 Returns a MinHeap representation of the array, where the array elements
 should be comparable, i.e. should implement the means to have a logical 
 comparison done 
-'''
+"""
 def createMinHeap(someArray):
     return __createHeap(someArray, __minHeapKeyComparisonLambda())
 
-'''
+"""
 Returns a MaxHeap representation of the array, where the array elements
 should be comparable, i.e. should implement the means to have a logical 
 comparison done 
-'''
+"""
 def createMaxHeap(someArray):
     return __createHeap(someArray, __maxHeapKeyComparisonLambda())
 
